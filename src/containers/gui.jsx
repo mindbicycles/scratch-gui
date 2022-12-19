@@ -57,6 +57,7 @@ class GUI extends React.Component {
         }
     }
     render () {
+
         if (this.props.isError) {
             throw new Error(
                 `Error in Scratch GUI [location=${window.location}]: ${this.props.error}`);
@@ -82,10 +83,15 @@ class GUI extends React.Component {
             loadingStateVisible,
             ...componentProps
         } = this.props;
+
+        console.log(" - - GUI extends React.Component componentProps:"+componentProps.backpackVisible);
+
         return (
             <GUIComponent
                 loading={fetchingProject || isLoading || loadingStateVisible}
                 {...componentProps}
+                //backpackVisible={false}
+                //costumeLibraryVisible={true}
             >
                 {children}
             </GUIComponent>

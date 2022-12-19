@@ -140,6 +140,11 @@ const GUIComponent = props => {
 
     return (<MediaQuery minWidth={layout.fullSizeMinWidth}>{isFullSize => {
         const stageSize = resolveStageSize(stageSizeMode, isFullSize);
+        const menubarVisible = false;
+        const tabsVisible = false;
+        const selectedSpriteWaterMarkVisible = false;
+        const extensionsVisible = false;
+        const stageAndSpriteSelectorsVisible = false;
 
         return isPlayerOnly ? (
             <StageWrapper
@@ -206,6 +211,7 @@ const GUIComponent = props => {
                         onRequestClose={onRequestCloseBackdropLibrary}
                     />
                 ) : null}
+                { menubarVisible ? (
                 <MenuBar
                     accountNavOpen={accountNavOpen}
                     authorId={authorId}
@@ -237,6 +243,7 @@ const GUIComponent = props => {
                     onStartSelectingFileUpload={onStartSelectingFileUpload}
                     onToggleLoginOpen={onToggleLoginOpen}
                 />
+                ) : null}
                 <Box className={styles.bodyWrapper}>
                     <Box className={styles.flexWrapper}>
                         <Box className={styles.editorWrapper}>
@@ -247,7 +254,7 @@ const GUIComponent = props => {
                                 selectedTabClassName={tabClassNames.tabSelected}
                                 selectedTabPanelClassName={tabClassNames.tabPanelSelected}
                                 onSelect={onActivateTab}
-                            >
+                            >   { tabsVisible ? (
                                 <TabList className={tabClassNames.tabList}>
                                     <Tab className={tabClassNames.tab}>
                                         <img
@@ -297,6 +304,7 @@ const GUIComponent = props => {
                                         />
                                     </Tab>
                                 </TabList>
+                                ) : null}
                                 <TabPanel className={tabClassNames.tabPanel}>
                                     <Box className={styles.blocksWrapper}>
                                         <Blocks
@@ -310,6 +318,7 @@ const GUIComponent = props => {
                                             vm={vm}
                                         />
                                     </Box>
+                                    { extensionsVisible ? (
                                     <Box className={styles.extensionButtonContainer}>
                                         <button
                                             className={styles.extensionButton}
@@ -323,9 +332,12 @@ const GUIComponent = props => {
                                             />
                                         </button>
                                     </Box>
+                                    ) : null}
+                                    { selectedSpriteWaterMarkVisible ? (
                                     <Box className={styles.watermark}>
                                         <Watermark />
                                     </Box>
+                                    ) : null}
                                 </TabPanel>
                                 <TabPanel className={tabClassNames.tabPanel}>
                                     {costumesTabVisible ? <CostumeTab vm={vm} /> : null}
@@ -340,19 +352,24 @@ const GUIComponent = props => {
                         </Box>
 
                         <Box className={classNames(styles.stageAndTargetWrapper, styles[stageSize])}>
+
                             <StageWrapper
                                 isFullScreen={isFullScreen}
                                 isRendererSupported={isRendererSupported}
                                 isRtl={isRtl}
                                 stageSize={stageSize}
                                 vm={vm}
-                            />
+                            />                                                    
+                        { stageAndSpriteSelectorsVisible ? (
+
                             <Box className={styles.targetWrapper}>
                                 <TargetPane
                                     stageSize={stageSize}
                                     vm={vm}
                                 />
                             </Box>
+                            ) : null}
+
                         </Box>
                     </Box>
                 </Box>

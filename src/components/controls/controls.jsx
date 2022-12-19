@@ -32,24 +32,34 @@ const Controls = function (props) {
         turbo,
         ...componentProps
     } = props;
+
+    const greenFlagVisible = false;
+    const stopButtonVisible = false;
     return (
         <div
             className={classNames(styles.controlsContainer, className)}
             {...componentProps}
         >
+            {greenFlagVisible ? (
             <GreenFlag
                 active={active}
                 title={intl.formatMessage(messages.goTitle)}
                 onClick={onGreenFlagClick}
             />
+            ) : null}
+
+            {stopButtonVisible ? (   
             <StopAll
                 active={active}
                 title={intl.formatMessage(messages.stopTitle)}
                 onClick={onStopAllClick}
             />
+            ) : null}
+            
             {turbo ? (
                 <TurboMode />
             ) : null}
+
         </div>
     );
 };

@@ -561,7 +561,7 @@ class Blocks extends React.Component {
                     onDrop={this.handleDrop}
                     {...props}
                 />
-                {this.state.prompt ? (
+                {this.state.prompt ? ( //I think this is the modal window that allows to add a named variable or custom (red) block 
                     <Prompt
                         defaultValue={this.state.prompt.defaultValue}
                         isStage={vm.runtime.getEditingTarget().isStage}
@@ -575,14 +575,14 @@ class Blocks extends React.Component {
                         onOk={this.handlePromptCallback}
                     />
                 ) : null}
-                {extensionLibraryVisible ? (
+                {extensionLibraryVisible ? (  //I think this add extension blocks if an extension library is loaded
                     <ExtensionLibrary
                         vm={vm}
                         onCategorySelected={this.handleCategorySelected}
                         onRequestClose={onRequestCloseExtensionLibrary}
                     />
                 ) : null}
-                {customProceduresVisible ? (
+                {customProceduresVisible ? ( //this is related to custom (red) blocks
                     <CustomProcedures
                         options={{
                             media: options.media

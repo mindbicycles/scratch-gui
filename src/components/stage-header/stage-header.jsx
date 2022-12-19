@@ -105,9 +105,9 @@ const StageHeaderComponent = function (props) {
             </Box>
         );
     } else {
+        const hideFullscreenButtons = true;
         const stageControls =
-            isPlayerOnly ? (
-                []
+            isPlayerOnly || hideFullscreenButtons ? ( []
             ) : (
                 <div className={styles.stageSizeToggleGroup}>
                     <div>
@@ -147,6 +147,7 @@ const StageHeaderComponent = function (props) {
                 </div>
             );
         header = (
+            hideFullscreenButtons ? ( [] ) : 
             <Box className={styles.stageHeaderWrapper}>
                 <Box className={styles.stageMenuWrapper}>
                     <Controls vm={vm} />

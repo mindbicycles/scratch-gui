@@ -44,6 +44,7 @@
     border-right: 1px solid $ui-black-transparent;
     border-bottom: 1px solid $ui-black-transparent;
     box-sizing: content-box;
+    width: 0;
     height: calc(100% - 3.25rem) !important;
 
     /*
@@ -64,6 +65,10 @@
     display: none;
 }
 
+.blocklyFlyout
+{
+    display: none;
+}
 .blocks :global(.blocklyFlyout) {
     border-right: 1px solid $ui-black-transparent;
     box-sizing: content-box;

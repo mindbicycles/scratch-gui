@@ -303,9 +303,9 @@ const GUIComponent = props => {
                                             id="gui.gui.soundsTab"
                                         />
                                     </Tab>
-                                </TabList>
-                                ) : null}
-                                <TabPanel className={tabClassNames.tabPanel}>
+                                </TabList>  ) : null}
+                                {/* <TabPanel className={tabClassNames.tabPanel}> */}
+
                                     <Box className={styles.blocksWrapper}>
                                         <Blocks
                                             canUseCloud={canUseCloud}
@@ -338,13 +338,13 @@ const GUIComponent = props => {
                                         <Watermark />
                                     </Box>
                                     ) : null}
-                                </TabPanel>
-                                <TabPanel className={tabClassNames.tabPanel}>
-                                    {costumesTabVisible ? <CostumeTab vm={vm} /> : null}
-                                </TabPanel>
-                                <TabPanel className={tabClassNames.tabPanel}>
-                                    {soundsTabVisible ? <SoundTab vm={vm} /> : null}
-                                </TabPanel>
+                                {/* // </TabPanel>
+                                // <TabPanel className={tabClassNames.tabPanel}>
+                                //     {costumesTabVisible ? <CostumeTab vm={vm} /> : null}
+                                // </TabPanel>
+                                // <TabPanel className={tabClassNames.tabPanel}>
+                                //     {soundsTabVisible ? <SoundTab vm={vm} /> : null}
+                                // </TabPanel> */}
                             </Tabs>
                             {backpackVisible ? (
                                 <Backpack host={backpackHost} />

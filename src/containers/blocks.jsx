@@ -136,6 +136,11 @@ class Blocks extends React.Component {
         if (this.props.isVisible) {
             this.setLocale();
         }
+
+        this.workspace.toolbox_.dispose();
+        this.workspace.scroll = () => {};
+
+
     }
     shouldComponentUpdate (nextProps, nextState) {
         return (
@@ -212,6 +217,9 @@ class Blocks extends React.Component {
     }
 
     updateToolbox () {
+
+        return;
+        
         this.toolboxUpdateTimeout = false;
 
         const categoryId = this.workspace.toolbox_.getSelectedCategoryId();

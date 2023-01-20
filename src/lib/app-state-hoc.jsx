@@ -11,7 +11,10 @@ import {setPlayer, setFullScreen} from '../reducers/mode.js';
 import locales from 'scratch-l10n';
 import {detectLocale} from './detect-locale';
 
+import {composeWithDevTools} from 'redux-devtools-extension';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 
 /*
  * Higher Order Component to provide redux state. If an `intl` prop is provided
@@ -75,6 +78,7 @@ const AppStateHOC = function (WrappedComponent, localesOnly) {
                     locales: initializedLocales,
                     scratchGui: initializedGui
                 };
+                const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
                 enhancer = composeEnhancers(guiMiddleware);
             }
             const reducer = combineReducers(reducers);

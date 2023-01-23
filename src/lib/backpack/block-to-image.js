@@ -1,5 +1,6 @@
 import computedStyleToInlineStyle from 'computed-style-to-inline-style';
-import ScratchBlocks from 'scratch-blocks';
+//import ScratchBlocks from 'scratch-blocks';
+import ScratchBlocks from '../../scratch-blocks_modified/dist/vertical';
 
 /**
  * Given a blockId, return a data-uri image that can be used to create a thumbnail.

@@ -1,4 +1,5 @@
-import ScratchBlocks from 'scratch-blocks';
+//import ScratchBlocks from 'scratch-blocks';
+import ScratchBlocks from '../scratch-blocks_modified/dist/vertical';
 
 const categorySeparator = '<sep gap="36"/>';
 

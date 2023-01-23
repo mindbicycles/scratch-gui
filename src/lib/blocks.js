@@ -1,4 +1,5 @@
-import ScratchBlocks from 'scratch-blocks';
+//import ScratchBlocks from 'scratch-blocks';
+import ScratchBlocks from '../scratch-blocks_modified/dist/vertical';
 
 /**
  * Connect scratch blocks with the vm

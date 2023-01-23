@@ -33,8 +33,8 @@ const Controls = function (props) {
         ...componentProps
     } = props;
 
-    const greenFlagVisible = false;
-    const stopButtonVisible = false;
+    const greenFlagVisible = true;
+    const stopButtonVisible = true;
     return (
         <div
             className={classNames(styles.controlsContainer, className)}

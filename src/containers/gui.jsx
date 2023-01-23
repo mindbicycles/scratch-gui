@@ -84,8 +84,6 @@ class GUI extends React.Component {
             ...componentProps
         } = this.props;
 
-        console.log(" - - GUI extends React.Component componentProps:"+componentProps.backpackVisible);
-
         return (
             <GUIComponent
                 loading={fetchingProject || isLoading || loadingStateVisible}

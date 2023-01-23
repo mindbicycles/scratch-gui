@@ -136,11 +136,6 @@ class Blocks extends React.Component {
         if (this.props.isVisible) {
             this.setLocale();
         }
-
-        this.workspace.toolbox_.dispose();
-        this.workspace.scroll = () => {};
-
-
     }
     shouldComponentUpdate (nextProps, nextState) {
         return (
@@ -217,9 +212,6 @@ class Blocks extends React.Component {
     }
 
     updateToolbox () {
-
-        return;
-        
         this.toolboxUpdateTimeout = false;
 
         const categoryId = this.workspace.toolbox_.getSelectedCategoryId();
@@ -485,6 +477,7 @@ class Blocks extends React.Component {
         this.blocks = blocks;
     }
     handlePromptStart (message, defaultValue, callback, optTitle, optVarType) {
+        debugger;
         const p = {prompt: {callback, message, defaultValue}};
         p.prompt.title = optTitle ? optTitle :
             this.ScratchBlocks.Msg.VARIABLE_MODAL_TITLE;

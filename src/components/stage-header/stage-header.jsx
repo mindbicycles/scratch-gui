@@ -105,7 +105,7 @@ const StageHeaderComponent = function (props) {
             </Box>
         );
     } else {
-        const hideFullscreenButtons = true;
+        const hideFullscreenButtons = false;
         const stageControls =
             isPlayerOnly || hideFullscreenButtons ? ( []
             ) : (

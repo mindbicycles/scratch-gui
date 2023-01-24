@@ -10,6 +10,7 @@ import tabStyles from 'react-tabs/style/react-tabs.css';
 import VM from 'scratch-vm';
 import Renderer from 'scratch-render';
 
+import PuzzleCompletePopup from '../../components/puzzle/puzzle-complete-popup.jsx';
 import Blocks from '../../containers/blocks.jsx';
 import CostumeTab from '../../containers/costume-tab.jsx';
 import TargetPane from '../../containers/target-pane.jsx';
@@ -316,6 +317,9 @@ const GUIComponent = props => {
                                             }}
                                             stageSize={stageSize}
                                             vm={vm}
+                                        />
+                                        <PuzzleCompletePopup
+                                            className={styles.modalContent}
                                         />
                                     </Box>
                                     { extensionsVisible ? (

@@ -18,6 +18,8 @@ const QueryParserHOC = function (WrappedComponent) {
             super(props);
             const queryParams = queryString.parse(location.search);
             const tutorialId = detectTutorialId(queryParams);
+
+            //parse urls such as https://scratch.mit.edu/projects/249143200/editor?tutorial=animate-an-adventure-game
             if (tutorialId) {
                 if (tutorialId === 'all') {
                     this.openTutorials();

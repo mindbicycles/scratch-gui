@@ -10,6 +10,10 @@ import {connect} from 'react-redux';
 import styles from '../prompt/prompt.css';
 import Box from '../box/box.jsx';
 
+import {
+    incrementPlaylistIndex
+} from '../../reducers/playlist';
+
 //based on Prompt.jsx
 
 class PuzzleCompletePopup extends React.Component {
@@ -31,6 +35,8 @@ class PuzzleCompletePopup extends React.Component {
         this.props.vm.on('PROJECT_RUN_STOP', this.onProjectRunStop);
     }
     handleOnCloseAlert () {
+
+        this.props.incrementPlaylistIndex();
         this.setState({visible: false});
     }
 
@@ -119,7 +125,8 @@ class PuzzleCompletePopup extends React.Component {
 
 PuzzleCompletePopup.propTypes = {
     intl: intlShape.isRequired,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
+    incrementPlaylistIndex: PropTypes.func
 };
 
 const mapStateToProps = state => ({
@@ -127,6 +134,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+    incrementPlaylistIndex: () => dispatch(incrementPlaylistIndex())
 });
 
 export default injectIntl(connect(

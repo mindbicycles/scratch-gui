@@ -53,9 +53,20 @@ class GUI extends React.Component {
         if (this.props.isShowingProject && !prevProps.isShowingProject) {
             // this only notifies container when a project changes from not yet loaded to loaded
             // At this time the project view in www doesn't need to know when a project is unloaded
+            this.sendPreloadMessage();
             this.props.onProjectLoaded();
         }
     }
+
+    sendPreloadMessage() {
+        var stageTarget = this.props.vm.runtime.getTargetForStage();
+
+        //if there is a chunk of code on the stage that expects the event "_preload", then simulate clicking it
+        var preloadMessageVariableBlock = Object.values(stageTarget.blocks._blocks).find(b => b.fields.BROADCAST_OPTION.value === "_preload"); 
+        if(preloadMessageVariableBlock)
+            this.props.vm.runtime.toggleScript(preloadMessageVariableBlock.id, {stackClick: true, target: stageTarget}, );        
+    }
+
     render () {
 
         if (this.props.isError) {

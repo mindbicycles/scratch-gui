@@ -45,7 +45,7 @@ class PuzzleCompletePopup extends React.Component {
         this.running = true; 
         if(this.props.vm.runtime.targets.length > 0)
         {
-            this.allGoalsAchievedVariable = Object.values(this.props.vm.runtime.targets[0].variables).find(v => v.name == "_allGoalsAchieved");
+            this.allGoalsAchievedVariable = Object.values(this.props.vm.runtime.getTargetForStage().variables).find(v => v.name == "_allGoalsAchieved");
         }
         else
         {
@@ -59,7 +59,7 @@ class PuzzleCompletePopup extends React.Component {
         }
         else
         {
-            console.error(" no global variable called _allGoalsAchieved found in the project")
+            console.error(" no global variable called _allGoalsAchieved found in the project. This puzzle can't run")
         }
     }
 

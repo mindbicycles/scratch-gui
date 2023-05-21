@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {intlShape, injectIntl} from 'react-intl';
 import bindAll from 'lodash.bindall';
 import {connect} from 'react-redux';
+import {setProjectTitle} from '../reducers/project-title';
 
 import {setProjectUnchanged} from '../reducers/project-changed';
 import {
@@ -71,18 +72,34 @@ const ProjectFetcherHOC = function (WrappedComponent) {
                 this.props.onActivateTab(BLOCKS_TAB_INDEX);
             }
         }
-        fetchProject (projectId, loadingState) {
-            return storage
-                .load(storage.AssetType.Project, projectId, storage.DataFormat.JSON)
-                .then(projectAsset => {
-                    if (projectAsset) {
-                        this.props.onFetchedProjectData(projectAsset.data, loadingState);
-                    } else {
-                        // Treat failure to load as an error
-                        // Throw to be caught by catch later on
-                        throw new Error('Could not find project');
-                    }
-                })
+        fetchProject(projectId, loadingState) {
+            return fetch("http://localhost:3000/projectInfo/" + projectId, {
+            //return fetch("https://api.scratch.mit.edu/projects/" + projectId, {
+                //method: "GET",
+                // mode: "cors",
+            })
+                .then((r) => r.json())
+                .then((projectInfo) => {
+
+                    this.props.onSetProjectTitle(projectInfo.title);
+                    const projectFileURL = `https://projects.scratch.mit.edu/${projectId}?token=${projectInfo.project_token}`;
+
+                    fetch(projectFileURL).then(res => res.arrayBuffer()).then((arrayBuffer) => {
+                        console.log("this.props.onFetchedProjectData:"+this.props.onFetchedProjectData);
+                        if (arrayBuffer) {
+                            this.props.onFetchedProjectData(
+                                arrayBuffer,
+                                loadingState
+                            );
+                        } else {
+                            // Treat failure to load as an error
+                            // Throw to be caught by catch later on
+                            throw new Error(
+                                "Could not find project"
+                            );
+                        }
+                    });
+                }) 
                 .catch(err => {
                     this.props.onError(err);
                     log.error(err);
@@ -132,7 +149,8 @@ const ProjectFetcherHOC = function (WrappedComponent) {
         projectToken: PropTypes.string,
         projectId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         reduxProjectId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        setProjectId: PropTypes.func
+        setProjectId: PropTypes.func,
+        onSetProjectTitle: PropTypes.func
     };
     ProjectFetcherComponent.defaultProps = {
         assetHost: 'https://assets.scratch.mit.edu',
@@ -154,6 +172,7 @@ const ProjectFetcherHOC = function (WrappedComponent) {
         onFetchedProjectData: (projectData, loadingState) =>
             dispatch(onFetchedProjectData(projectData, loadingState)),
         setProjectId: projectId => dispatch(setProjectId(projectId)),
+        onSetProjectTitle: title => dispatch(setProjectTitle(title)),
         onProjectUnchanged: () => dispatch(setProjectUnchanged())
     });
     // Allow incoming props to override redux-provided props. Used to mock in tests.

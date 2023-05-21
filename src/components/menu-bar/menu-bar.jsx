@@ -12,6 +12,7 @@ import VM from 'scratch-vm';
 import Box from '../box/box.jsx';
 import Button from '../button/button.jsx';
 import CommunityButton from './community-button.jsx';
+import NextLevelButton from './next-level-button.jsx';
 import ShareButton from './share-button.jsx';
 import {ComingSoonTooltip} from '../coming-soon/coming-soon.jsx';
 import Divider from '../divider/divider.jsx';
@@ -76,6 +77,10 @@ import aboutIcon from './icon--about.svg';
 import scratchLogo from './scratch-logo.svg';
 
 import sharedMessages from '../../lib/shared-messages';
+
+import {
+    incrementPlaylistIndex
+} from '../../reducers/playlist';
 
 const ariaMessages = defineMessages({
     language: {
@@ -379,6 +384,7 @@ class MenuBar extends React.Component {
         );
         // Show the About button only if we have a handler for it (like in the desktop app)
         const aboutButton = this.buildAboutMenu(this.props.onClickAbout);
+        const showScratchLogo = false;
         return (
             <Box
                 className={classNames(
@@ -388,6 +394,7 @@ class MenuBar extends React.Component {
             >
                 <div className={styles.mainMenu}>
                     <div className={styles.fileGroup}>
+                        {showScratchLogo ? 
                         <div className={classNames(styles.menuBarItem)}>
                             <img
                                 alt="Scratch"
@@ -398,8 +405,9 @@ class MenuBar extends React.Component {
                                 src={this.props.logo}
                                 onClick={this.props.onClickLogo}
                             />
-                        </div>
-                        {(this.props.canChangeLanguage) && (<div
+                        </div> 
+                        : null }
+                        {/* {(this.props.canChangeLanguage) && (<div
                             className={classNames(styles.menuBarItem, styles.hoverable, styles.languageMenu)}
                         >
                             <div>
@@ -413,7 +421,8 @@ class MenuBar extends React.Component {
                                 />
                             </div>
                             <LanguageSelector label={this.props.intl.formatMessage(ariaMessages.language)} />
-                        </div>)}
+                        </div>)} */}
+                        {/*  //edit dropdown menu with turbo mode
                         {(this.props.canManageFiles) && (
                             <div
                                 className={classNames(styles.menuBarItem, styles.hoverable, {
@@ -528,8 +537,10 @@ class MenuBar extends React.Component {
                                     )}</TurboMode>
                                 </MenuSection>
                             </MenuBarMenu>
-                        </div>
+                        </div> 
+                        */}
                     </div>
+                    {/* //tutorials
                     <Divider className={classNames(styles.divider)} />
                     <div
                         aria-label={this.props.intl.formatMessage(ariaMessages.tutorials)}
@@ -541,7 +552,9 @@ class MenuBar extends React.Component {
                             src={helpIcon}
                         />
                         <FormattedMessage {...ariaMessages.tutorials} />
-                    </div>
+                    </div> 
+                    */}
+                    {/* //project name input box
                     <Divider className={classNames(styles.divider)} />
                     {this.props.canEditTitle ? (
                         <div className={classNames(styles.menuBarItem, styles.growable)}>
@@ -562,7 +575,28 @@ class MenuBar extends React.Component {
                             userId={this.props.authorId}
                             username={this.props.authorUsername}
                         />
-                    ) : null)}
+                    ) : null)} 
+                    */}
+      
+                    <Divider className={classNames(styles.divider)} />
+
+                    <NextLevelButton
+                            className={styles.menuBarButton}
+                            /* eslint-disable react/jsx-no-bind */
+                            onClick={() => {
+                                //this.handleClickShare(waitForUpdate);
+                                this.props.incrementPlaylistIndex();
+                            }}
+                            /* eslint-enable react/jsx-no-bind */
+                        />
+
+                    <Divider className={classNames(styles.divider)} />
+
+                    {this.props.canEditTitle ? (
+                        this.props.projectTitle
+                        ) :  null
+                    } 
+
                     <div className={classNames(styles.menuBarItem)}>
                         {this.props.canShare ? (
                             (this.props.isShowingProject || this.props.isUpdating) && (
@@ -583,11 +617,13 @@ class MenuBar extends React.Component {
                                 </ProjectWatcher>
                             )
                         ) : (
+                            /* orange share button 
                             this.props.showComingSoon ? (
                                 <MenuBarItemTooltip id="share-button">
                                     <ShareButton className={styles.menuBarButton} />
                                 </MenuBarItemTooltip>
-                            ) : []
+                             ) : */
+                            []
                         )}
                         {this.props.canRemix ? remixButton : []}
                     </div>
@@ -609,11 +645,13 @@ class MenuBar extends React.Component {
                                     }
                                 </ProjectWatcher>
                             )
-                        ) : (this.props.showComingSoon ? (
+                        ) : (/* //<see project page> button
+                            this.props.showComingSoon ? (
                             <MenuBarItemTooltip id="community-button">
                                 <CommunityButton className={styles.menuBarButton} />
                             </MenuBarItemTooltip>
-                        ) : [])}
+                        ) : */
+                        [])}
                     </div>
                 </div>
 
@@ -698,7 +736,7 @@ class MenuBar extends React.Component {
                                 </div>
                             </React.Fragment>
                         )
-                    ) : (
+                    ) : (/* //folder link to "my stuff" and profile name with dropdown
                         // ******** no login session is available, so don't show login stuff
                         <React.Fragment>
                             {this.props.showComingSoon ? (
@@ -743,7 +781,7 @@ class MenuBar extends React.Component {
                                     </MenuBarItemTooltip>
                                 </React.Fragment>
                             ) : []}
-                        </React.Fragment>
+                        </React.Fragment> */ null
                     )}
                 </div>
 
@@ -823,7 +861,8 @@ MenuBar.propTypes = {
     showComingSoon: PropTypes.bool,
     userOwnsProject: PropTypes.bool,
     username: PropTypes.string,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
+    incrementPlaylistIndex: PropTypes.func
 };
 
 MenuBar.defaultProps = {
@@ -873,7 +912,8 @@ const mapDispatchToProps = dispatch => ({
     onClickRemix: () => dispatch(remixProject()),
     onClickSave: () => dispatch(manualUpdateProject()),
     onClickSaveAsCopy: () => dispatch(saveProjectAsCopy()),
-    onSeeCommunity: () => dispatch(setPlayer(true))
+    onSeeCommunity: () => dispatch(setPlayer(true)),
+    incrementPlaylistIndex: () => dispatch(incrementPlaylistIndex())
 });
 
 export default compose(

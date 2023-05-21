@@ -78,7 +78,7 @@ const AppStateHOC = function (WrappedComponent, localesOnly) {
                     locales: initializedLocales,
                     scratchGui: initializedGui
                 };
-                const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
+                //const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
                 enhancer = composeEnhancers(guiMiddleware);
             }
             const reducer = combineReducers(reducers);

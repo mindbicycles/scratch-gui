@@ -45,7 +45,10 @@ const DroppableBlocks = DropAreaHOC([
     DragConstants.BACKPACK_CODE
 ])(BlocksComponent);
 
+const showBlocksToolbox = false;
+
 class Blocks extends React.Component {
+    
     constructor (props) {
         super(props);
         this.ScratchBlocks = VMScratchBlocks(props.vm);
@@ -136,6 +139,14 @@ class Blocks extends React.Component {
         if (this.props.isVisible) {
             this.setLocale();
         }
+
+        //this.workspace.toolbox_.dispose();
+        if(!showBlocksToolbox)
+        {
+            this.workspace.toolbox_.width =0;
+            this.workspace.toolbox_.flyout_.setVisible(false);
+            //this.workspace.scroll = () => {};
+        }
     }
     shouldComponentUpdate (nextProps, nextState) {
         return (
@@ -212,6 +223,10 @@ class Blocks extends React.Component {
     }
 
     updateToolbox () {
+
+        if(!showBlocksToolbox)
+            return;
+        
         this.toolboxUpdateTimeout = false;
 
         const categoryId = this.workspace.toolbox_.getSelectedCategoryId();
@@ -477,7 +492,6 @@ class Blocks extends React.Component {
         this.blocks = blocks;
     }
     handlePromptStart (message, defaultValue, callback, optTitle, optVarType) {
-        debugger;
         const p = {prompt: {callback, message, defaultValue}};
         p.prompt.title = optTitle ? optTitle :
             this.ScratchBlocks.Msg.VARIABLE_MODAL_TITLE;

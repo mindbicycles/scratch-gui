@@ -141,7 +141,7 @@ const GUIComponent = props => {
 
     return (<MediaQuery minWidth={layout.fullSizeMinWidth}>{isFullSize => {
         const stageSize = resolveStageSize(stageSizeMode, isFullSize);
-        const menubarVisible = false;
+        const menubarVisible = true;
         const tabsVisible = false;
         const selectedSpriteWaterMarkVisible = false;
         const extensionsVisible = false;
@@ -453,7 +453,7 @@ GUIComponent.defaultProps = {
     canChangeLanguage: true,
     canCreateNew: false,
     canEditTitle: false,
-    canManageFiles: true,
+    canManageFiles: false,
     canRemix: false,
     canSave: false,
     canCreateCopy: false,

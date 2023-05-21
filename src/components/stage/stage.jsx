@@ -60,12 +60,12 @@ const StageComponent = props => {
                         }}
                         {...boxProps}
                     />
-                    {/* <Box className={styles.monitorWrapper}>
+                    <Box className={styles.monitorWrapper}>
                         <MonitorList
                             draggable={useEditorDragStyle}
                             stageSize={stageDimensions}
                         />
-                    </Box> */}
+                    </Box>
                     <Box className={styles.frameWrapper}>
                         <TargetHighlight
                             className={styles.frame}

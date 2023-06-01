@@ -1,0 +1,192 @@
+{
+	"objName": "Stage",
+	"variables": [{
+			"name": "vy",
+			"value": -3.5165000000000006,
+			"isPersistent": false
+		},
+		{
+			"name": "g",
+			"value": "-.5",
+			"isPersistent": false
+		},
+		{
+			"name": "vx",
+			"value": 1.4580000000000002,
+			"isPersistent": false
+		},
+		{
+			"name": "i",
+			"value": 3,
+			"isPersistent": false
+		},
+		{
+			"name": "d1",
+			"value": 0,
+			"isPersistent": false
+		},
+		{
+			"name": "x",
+			"value": 233.9173278872492,
+			"isPersistent": false
+		},
+		{
+			"name": "acceleration",
+			"value": "-3",
+			"isPersistent": false
+		}],
+	"scripts": [[92, 162, [["whenGreenFlag"], ["doForever", [["changeGraphicEffect:by:", "color", 1]]]]]],
+	"sounds": [{
+			"soundName": "pop",
+			"soundID": -1,
+			"md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+			"sampleCount": 258,
+			"rate": 11025,
+			"format": ""
+		}],
+	"costumes": [{
+			"costumeName": "boardwalk",
+			"baseLayerID": -1,
+			"baseLayerMD5": "de0e54cd11551566f044e7e6bc588b2c.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		}],
+	"currentCostumeIndex": 0,
+	"penLayerMD5": "5c81a336fab8be57adc039a8a2b33ca9.png",
+	"penLayerID": -1,
+	"tempoBPM": 60,
+	"videoAlpha": 0.5,
+	"children": [{
+			"objName": "Dino",
+			"sounds": [{
+					"soundName": "pop",
+					"soundID": -1,
+					"md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+					"sampleCount": 258,
+					"rate": 11025,
+					"format": ""
+				}],
+			"costumes": [{
+					"costumeName": "dinosaur2-a",
+					"baseLayerID": -1,
+					"baseLayerMD5": "ae724a0a6d6e0a2b33dded4140219fb0.svg",
+					"bitmapResolution": 1,
+					"rotationCenterX": 75,
+					"rotationCenterY": 75
+				},
+				{
+					"costumeName": "dinosaur2-b",
+					"baseLayerID": -1,
+					"baseLayerMD5": "a01d31caaab3b14b9bb0e2cd5a86c70c.svg",
+					"bitmapResolution": 1,
+					"rotationCenterX": 67,
+					"rotationCenterY": 67
+				}],
+			"currentCostumeIndex": 0,
+			"scratchX": -149,
+			"scratchY": -58,
+			"scale": 1,
+			"direction": 90,
+			"rotationStyle": "normal",
+			"isDraggable": false,
+			"indexInLibrary": 1,
+			"visible": true,
+			"spriteInfo": {
+			}
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "vy",
+			"color": 15629590,
+			"label": "vy",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 5,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "g",
+			"color": 15629590,
+			"label": "g",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 32,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "vx",
+			"color": 15629590,
+			"label": "vx",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 59,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "i",
+			"color": 15629590,
+			"label": "i",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 86,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "d1",
+			"color": 15629590,
+			"label": "d1",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 113,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "acceleration",
+			"color": 15629590,
+			"label": "acceleration",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 140,
+			"visible": false
+		}],
+	"info": {
+		"swfVersion": "v456",
+		"spriteCount": 1,
+		"userAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/60.0.3112.90 Safari\/537.36",
+		"videoOn": false,
+		"projectID": "119615668",
+		"flashVersion": "MAC 26,0,0,151",
+		"hasCloudData": false,
+		"scriptCount": 1
+	}
+}

@@ -64,7 +64,12 @@ class GUI extends React.Component {
         //if there is a chunk of code on the stage that expects the event "_preload", then simulate clicking it
         var preloadMessageVariableBlock = Object.values(stageTarget.blocks._blocks).find(b => b.fields.BROADCAST_OPTION.value === "_preload"); 
         if(preloadMessageVariableBlock)
+        {
             this.props.vm.runtime.toggleScript(preloadMessageVariableBlock.id, {stackClick: true, target: stageTarget}, );        
+            this.props.vm.runtime._step();
+            this.props.vm.stopAll();
+            //setTimeout( () => this.props.vm.stopAll(), 100);
+        }
     }
 
     render () {

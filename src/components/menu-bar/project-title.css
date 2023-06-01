@@ -1,0 +1,16 @@
+@import "../../css/colors.css";
+@import "../../css/units.css";
+@import "../../css/z-index.css";
+
+/*
+If project-title.jsx is part of a menu bar say menu-bar.jsx, it can have additional css classes that
+can set a width for example or what it should do in a flex box (eg. grow).
+*/
+
+.title {
+    height: auto;
+    padding: .5rem;
+    width: 200px;
+    //text-align: right;
+}
+

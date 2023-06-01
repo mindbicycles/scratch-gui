@@ -1,0 +1,6 @@
+@import "../../css/colors.css";
+
+.puzzle-menu-button {
+    background: $ui-black-transparent;
+}
+
